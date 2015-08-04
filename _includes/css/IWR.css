@@ -30,7 +30,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .intro {
 	padding: 200px 0;
-	background: url(/img/intro-bg-2.jpg) no-repeat center center scroll;
+	background: url({{ "img/intro-bg-2.jpg" | prepend: site.baseurl }}) no-repeat center center scroll;
 	-webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -64,7 +64,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .services-section {
 	padding: 100px 0;
-    background: url(/img/contact-bg-1.jpg) no-repeat center center scroll;
+    background: url({{ "img/contact-bg-1.jpg" | prepend: site.baseurl }}) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
