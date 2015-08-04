@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .contact-section {
 	padding: 100px 0;
-    background: url(/img/contact-bg-1.jpg) no-repeat center center scroll;
+    background: url({{ "img/contact-bg-2.jpg" | prepend: site.baseurl }}) no-repeat center center scroll;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
