@@ -5,15 +5,94 @@ h1, h2, h3, h4, h5, h6 {
 	font-style: italic; 
 }
 
-@media (min-width: 767px) {
-	.intro .intro-body .brand-heading {
-	  font-size: 40px;
-	}
+.navbar-brand img {
+	max-height: 40px;
 }
 
 @media (min-width: 767px) {
+
+	.navbar-brand {
+		padding: 0;
+	}
+
+	.navbar-brand img {
+		max-height: 70px;
+	}
+
+	.intro .intro-body .brand-heading {
+	  font-size: 40px;
+	}
+
 	.intro .intro-body .intro-text {
 	  font-size: 20px;
 	}
 }
 
+.intro {
+	padding: 200px 0;
+	background: url(/img/intro-bg-2.jpg) no-repeat center center scroll;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.address {
+	font-family: 'Old Standard TT', serif;
+	font-size: 1.5em;
+	font-weight: 400;
+	font-style: italic; 
+}
+
+/*.address .dl-horizontal dt {
+	width: 150px;
+}
+
+.address .dl-horizontal dd {
+	width: 300px;
+}*/
+
+.portrait {
+	max-width: 300px;
+	border: 5px solid #fff;
+	border-radius: 100%;
+}
+
+.experience {
+	padding: 20px;
+}
+
+.services-section {
+	padding: 100px 0;
+    background: url(/img/contact-bg-1.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.services-section p span {
+
+	font-family: 'Old Standard TT', serif;
+	font-size: 1.3em;
+	font-style: italic; 
+}
+
+.brands img {
+	max-width: 200px;
+	padding: 10px;
+}
+
+.contact-section {
+	padding: 100px 0;
+    background: url(/img/contact-bg-1.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+#map {
+	border: 5px solid #000;
+    margin-top: 0;
+}

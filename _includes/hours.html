@@ -1,0 +1,18 @@
+    <!-- Hours Section -->
+    <section id="hours" class="content-section text-center">
+        <div class="hours-section">
+            <div class="container">
+                <div class="col-lg-8 col-lg-offset-2">
+                    <h2>Hours</h2>
+                    <div class='address'>
+                        {% for hours in site.hours %}
+                            <dl class="dl-horizontal">
+                                <dt>{{ hours[0] }}</dt>
+                                <dd>{{ hours[1] }}</dd>
+                            </dl>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
