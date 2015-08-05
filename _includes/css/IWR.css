@@ -5,11 +5,47 @@ h1, h2, h3, h4, h5, h6 {
 	font-style: italic; 
 }
 
+blockquote {
+  border: none;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C""\201D""\2018""\2019";
+  font-style: italic;
+}
+
+blockquote:before {
+  color: #11505d;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote:after {
+  color: #11505d;
+  content: close-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+
+blockquote p {
+  display: inline;
+}
+
 .navbar-brand img {
-	max-height: 40px;
+	margin-top: 10px;
+	max-height: 50px;
+	border: 5px solid #fff;
 }
 
 @media (min-width: 767px) {
+
+	.content-section {
+		padding-top: 150px;
+	}
 
 	.navbar-brand {
 		padding: 0;
@@ -38,10 +74,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .address {
+	margin-top: 100px;
 	font-family: 'Old Standard TT', serif;
 	font-size: 1.5em;
 	font-weight: 400;
 	font-style: italic; 
+}
+
+.address div {
+	margin: 25px 0;
 }
 
 /*.address .dl-horizontal dt {
@@ -54,12 +95,13 @@ h1, h2, h3, h4, h5, h6 {
 
 .portrait {
 	max-width: 300px;
+	margin: 1em;
 	border: 5px solid #fff;
 	border-radius: 100%;
 }
 
-.experience {
-	padding: 20px;
+.experience p {
+	margin: 10px;
 }
 
 .services-section {
@@ -96,3 +138,4 @@ h1, h2, h3, h4, h5, h6 {
 	border: 5px solid #000;
     margin-top: 0;
 }
+

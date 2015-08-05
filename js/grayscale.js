@@ -175,7 +175,7 @@ function init() {
         map: map
     });
 
-    google.maps.event.addListener(storeMarker, 'click', function() {
+    google.maps.event.addListener(map, 'click', function() {
         window.open("https://www.google.com/maps/dir/Current+Location/1915+Lonsdale+Ave,+North+Vancouver,+BC+V7M+2K3");
     });
 }
