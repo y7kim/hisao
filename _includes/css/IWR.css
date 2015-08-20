@@ -27,8 +27,8 @@ blockquote:after {
   content: close-quote;
   font-size: 4em;
   line-height: 0.1em;
-  margin-right: 0.25em;
-  vertical-align: -0.4em;
+  margin-left: 0.25em;
+  vertical-align: -0.6em;
 }
 
 blockquote p {
@@ -147,3 +147,7 @@ blockquote p {
     margin-top: 0;
 }
 
+.rateit .rateit-preset
+{
+    background: url(star.gif) left -32px;
+}
