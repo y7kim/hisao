@@ -29,6 +29,72 @@ $('.navbar-collapse ul li a').click(function() {
     $('.navbar-toggle:visible').click();
 });
 
+var Place_Details = {
+
+  init: function (map_obj, place_id) {
+    var _this = this;
+
+    this.getAll(map_obj, place_id, function(details) {
+      _this.ui.show(details.reviews);
+    });
+  },
+
+  getAll: function (map_obj, place_id, callback) {
+    var service = new google.maps.places.PlacesService(map_obj);
+    
+    service.getDetails({
+      placeId: place_id
+    }, function(place, status) {
+      if (status === google.maps.places.PlacesServiceStatus.OK) {
+        if(callback)
+          callback(place);
+      }
+    });
+  },
+
+  ui: {
+    show: function (reviews) {
+
+        var $container = $('#google_reviews');
+
+        reviews.forEach(function (review, index) {
+
+          if (review.rating > 4) {
+            displayReview(review);
+          }
+
+          function displayReview (review) {
+
+            var $content = $('<div/>', {
+              style: 'margin: 100px 0;'
+            });
+
+            var $name = $('<h3/>', {
+              id: 'name-' + index,
+              html: review.author_name,
+              style: 'margin: 1em;'
+            });
+
+            var $review = $('<blockquote/>', {
+              id: 'review-' + index,
+              html: review.text
+            });
+
+            var $stars = $('<div/>', {
+              class: 'rateit',
+              'data-rateit-value': review.rating,
+              'data-rateit-ispreset': true,
+              'data-rateit-readonly': true
+            }).rateit();
+
+            $content.append($review, $stars, $name).appendTo($container);
+          }
+
+        });
+    }
+  }
+};
+
 // Google Maps Scripts
 // When the window has finished loading create our google map below
 google.maps.event.addDomListener(window, 'load', init);
@@ -47,117 +113,6 @@ function init() {
         disableDefaultUI: true,
         scrollwheel: false,
         draggable: false,
-
-        // How you would like to style the map. 
-        // This is where you would paste any style found on Snazzy Maps.
-        // styles: [{
-        //     "featureType": "water",
-        //     "elementType": "geometry",
-        //     "stylers": [{
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 17
-        //     }]
-        // }, {
-        //     "featureType": "landscape",
-        //     "elementType": "geometry",
-        //     "stylers": [{
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 20
-        //     }]
-        // }, {
-        //     "featureType": "road.highway",
-        //     "elementType": "geometry.fill",
-        //     "stylers": [{
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 17
-        //     }]
-        // }, {
-        //     "featureType": "road.highway",
-        //     "elementType": "geometry.stroke",
-        //     "stylers": [{
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 29
-        //     }, {
-        //         "weight": 0.2
-        //     }]
-        // }, {
-        //     "featureType": "road.arterial",
-        //     "elementType": "geometry",
-        //     "stylers": [{
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 18
-        //     }]
-        // }, {
-        //     "featureType": "road.local",
-        //     "elementType": "geometry",
-        //     "stylers": [{
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 16
-        //     }]
-        // }, {
-        //     "featureType": "poi",
-        //     "elementType": "geometry",
-        //     "stylers": [{
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 21
-        //     }]
-        // }, {
-        //     "elementType": "labels.text.stroke",
-        //     "stylers": [{
-        //         "visibility": "on"
-        //     }, {
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 16
-        //     }]
-        // }, {
-        //     "elementType": "labels.text.fill",
-        //     "stylers": [{
-        //         "saturation": 36
-        //     }, {
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 40
-        //     }]
-        // }, {
-        //     "elementType": "labels.icon",
-        //     "stylers": [{
-        //         "visibility": "off"
-        //     }]
-        // }, {
-        //     "featureType": "transit",
-        //     "elementType": "geometry",
-        //     "stylers": [{
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 19
-        //     }]
-        // }, {
-        //     "featureType": "administrative",
-        //     "elementType": "geometry.fill",
-        //     "stylers": [{
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 20
-        //     }]
-        // }, {
-        //     "featureType": "administrative",
-        //     "elementType": "geometry.stroke",
-        //     "stylers": [{
-        //         "color": "#000000"
-        //     }, {
-        //         "lightness": 17
-        //     }, {
-        //         "weight": 1.2
-        //     }]
-        // }]
     };
 
     // Get the HTML DOM element that will contain your map 
@@ -178,4 +133,9 @@ function init() {
     google.maps.event.addListener(map, 'click', function() {
         window.open("https://www.google.com/maps/dir/Current+Location/1915+Lonsdale+Ave,+North+Vancouver,+BC+V7M+2K3");
     });
+
+    var PLACE_ID = 'ChIJxRqbsj5whlQRXZBUDUv-2j0';
+    var place_details = Object.create(Place_Details);
+    place_details.init(map, PLACE_ID);
+    
 }
